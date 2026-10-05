@@ -6,6 +6,7 @@ import { CommandMenu } from "@/components/chrome/CommandMenu";
 import { HeroSection } from "@/components/hero/HeroSection";
 import { BentoGrid } from "@/components/work/BentoGrid";
 import { ArsenalGrid } from "@/components/skills/ArsenalGrid";
+import { ExperienceSection } from "@/components/experience/ExperienceSection";
 import { FieldNotes } from "@/components/credentials/FieldNotes";
 import { Footer } from "@/components/chrome/Footer";
 import { AquaticCursor } from "@/components/chrome/AquaticCursor";
@@ -35,7 +36,10 @@ export default function Home() {
         {/* 3. Technical Arsenal & Engineering Matrix */}
         <ArsenalGrid />
 
-        {/* 4. Field Notes, Accolades & Academic Validation */}
+        {/* 4. Commercial Experience (DHL Supply Chain & Brandvibe) */}
+        <ExperienceSection />
+
+        {/* 5. Field Notes, Accolades & Academic Validation */}
         <FieldNotes />
       </main>
 

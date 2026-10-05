@@ -13,6 +13,7 @@ import {
   ExternalLink,
   Code2,
   Sparkles,
+  Briefcase,
 } from "lucide-react";
 import { PROFILE, PROJECTS } from "@/lib/constants";
 
@@ -136,6 +137,13 @@ export function CommandMenu({ open, setOpen }: CommandMenuProps) {
               >
                 <Code2 className="w-4 h-4 text-teal-400" />
                 <span>Technical Arsenal & Architecture Stack</span>
+              </Command.Item>
+              <Command.Item
+                onSelect={() => navigateTo("experience")}
+                className="flex items-center gap-3 px-3 py-2 rounded-lg cursor-pointer hover:bg-sky-500/10 hover:text-sky-200 transition-colors"
+              >
+                <Briefcase className="w-4 h-4 text-sky-400" />
+                <span>Industry Experience (DHL Supply Chain & Brandvibe)</span>
               </Command.Item>
               <Command.Item
                 onSelect={() => navigateTo("field-notes")}

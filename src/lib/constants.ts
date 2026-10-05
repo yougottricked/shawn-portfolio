@@ -173,3 +173,43 @@ export const CREDENTIALS = [
     detail: "Architected serverless humanitarian management platform deployed with AWS SAM and Amazon RDS.",
   },
 ];
+
+export interface ExperienceData {
+  role: string;
+  company: string;
+  type: string;
+  period: string;
+  duration: string;
+  location: string;
+  workplace: string;
+  description: string;
+  skills: string[];
+}
+
+export const EXPERIENCES: ExperienceData[] = [
+  {
+    role: "IT Support Specialist",
+    company: "DHL Supply Chain",
+    type: "Internship",
+    period: "Jul 2025 - Nov 2025",
+    duration: "5 mos",
+    location: "Shah Alam, Selangor, Malaysia",
+    workplace: "On-site",
+    description:
+      "Enterprise supply chain IT infrastructure support, logistics systems operations, and operational telemetry dashboards engineered using Microsoft Power BI.",
+    skills: ["Microsoft Power BI", "Enterprise IT Support", "Logistics Systems", "Operational Telemetry"],
+  },
+  {
+    role: "Website Developer",
+    company: "Brandvibe",
+    type: "Internship",
+    period: "May 2024 - Jul 2024",
+    duration: "3 mos",
+    location: "Selangor, Malaysia",
+    workplace: "On-site",
+    description:
+      "Developed responsive web applications, implemented client-facing user interfaces, optimized cross-browser performance, and contributed to frontend production delivery.",
+    skills: ["Web Development", "UI/UX Engineering", "Frontend Architecture", "Cross-Browser Testing"],
+  },
+];
+

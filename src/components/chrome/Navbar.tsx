@@ -83,6 +83,12 @@ export function Navbar({ onOpenCommand }: NavbarProps) {
             Engineering
           </a>
           <a
+            href="#experience"
+            className="hover:text-sky-300 transition-colors"
+          >
+            Experience
+          </a>
+          <a
             href="#field-notes"
             className="hover:text-sky-300 transition-colors"
           >
