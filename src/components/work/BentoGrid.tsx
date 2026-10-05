@@ -14,7 +14,7 @@ export function BentoGrid() {
         <div>
           <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-teal-300 mb-1.5">
             <Layers className="w-3.5 h-3.5" />
-            <span>Selected Work · 01—03</span>
+            <span>Selected Work · 01:03</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-light text-white tracking-tight">
             Systems &amp; Models, <span className="font-serif italic text-sky-300">in execution.</span>

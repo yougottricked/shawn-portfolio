@@ -8,12 +8,16 @@ import { BentoGrid } from "@/components/work/BentoGrid";
 import { ArsenalGrid } from "@/components/skills/ArsenalGrid";
 import { FieldNotes } from "@/components/credentials/FieldNotes";
 import { Footer } from "@/components/chrome/Footer";
+import { AquaticCursor } from "@/components/chrome/AquaticCursor";
 
 export default function Home() {
   const [commandOpen, setCommandOpen] = useState(false);
 
   return (
     <div className="relative min-h-screen bg-[#08141e] text-[#f0f9ff] selection:bg-sky-500/25 selection:text-sky-200 aquatic-gradient-bg">
+      {/* Subtle Aquatic Ambient Mouse Spotlight */}
+      <AquaticCursor />
+
       {/* Top Fixed Aquatic Navigation */}
       <Navbar onOpenCommand={() => setCommandOpen(true)} />
 

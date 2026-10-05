@@ -80,7 +80,7 @@ export function CommandMenu({ open, setOpen }: CommandMenuProps) {
                 <FolderGit2 className="w-4 h-4 text-sky-400" />
                 <div className="flex flex-col">
                   <span className="font-medium text-slate-200">
-                    LWICMS — Fish Retail Inventory IMS
+                    LWICMS: Fish Retail Inventory IMS
                   </span>
                   <span className="text-xs text-slate-400">
                     36 Controllers, 274 Routes, 91 Tables, 11-Rule Tank Engine
@@ -95,7 +95,7 @@ export function CommandMenu({ open, setOpen }: CommandMenuProps) {
                 <Cpu className="w-4 h-4 text-teal-400" />
                 <div className="flex flex-col">
                   <span className="font-medium text-slate-200">
-                    AquaPonds — Deep Learning IoT WQI
+                    AquaPonds: Deep Learning IoT WQI
                   </span>
                   <span className="text-xs text-slate-400">
                     Multivariate Telemetry, KerasTuner DNN & Latent Autoencoder
@@ -110,7 +110,7 @@ export function CommandMenu({ open, setOpen }: CommandMenuProps) {
                 <Cloud className="w-4 h-4 text-sky-400" />
                 <div className="flex flex-col">
                   <span className="font-medium text-slate-200">
-                    RescueNet — Serverless Crisis Platform
+                    RescueNet: Serverless Crisis Platform
                   </span>
                   <span className="text-xs text-slate-400">
                     AWS SAM, Lambda Node 20.x, RDS PostgreSQL, Zero-Route RPC

@@ -14,7 +14,7 @@ export function RescueNetCard() {
   return (
     <div
       id="project-rescuenet"
-      className="p-6 sm:p-8 rounded-2xl bg-[#0e202e]/70 border border-sky-500/15 hover:border-sky-400/30 transition-all duration-300"
+      className="p-6 sm:p-8 rounded-2xl bg-[#0e202e]/70 border border-sky-500/15 hover:border-sky-400/40 hover:shadow-2xl hover:shadow-sky-500/10 hover:-translate-y-1 transition-all duration-300"
     >
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 mb-4">
@@ -29,7 +29,7 @@ export function RescueNetCard() {
           </div>
           <h2 className="text-2xl sm:text-3xl font-light text-white tracking-tight flex items-center gap-2.5">
             <Cloud className="w-6 h-6 text-sky-400 shrink-0" />
-            <span>RescueNet — Serverless Crisis Logistics</span>
+            <span>RescueNet: Serverless Crisis Logistics</span>
           </h2>
         </div>
 

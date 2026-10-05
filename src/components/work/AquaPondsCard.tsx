@@ -31,7 +31,7 @@ export function AquaPondsCard() {
   return (
     <div
       id="project-aquaponds"
-      className="p-6 sm:p-8 rounded-2xl bg-[#0e202e]/70 border border-sky-500/15 hover:border-teal-400/30 transition-all duration-300"
+      className="p-6 sm:p-8 rounded-2xl bg-[#0e202e]/70 border border-sky-500/15 hover:border-teal-400/40 hover:shadow-2xl hover:shadow-teal-500/10 hover:-translate-y-1 transition-all duration-300"
     >
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 mb-4">
@@ -46,7 +46,7 @@ export function AquaPondsCard() {
           </div>
           <h2 className="text-2xl sm:text-3xl font-light text-white tracking-tight flex items-center gap-2.5">
             <Cpu className="w-6 h-6 text-teal-400 shrink-0" />
-            <span>AquaPonds — Deep Learning WQI & Autoencoder</span>
+            <span>AquaPonds: Deep Learning WQI & Autoencoder</span>
           </h2>
         </div>
 

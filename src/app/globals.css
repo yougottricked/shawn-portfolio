@@ -2,7 +2,7 @@
 
 @layer base {
   :root {
-    /* Calm Aquatic / Deep Oceanic Palette — NOT pitch black */
+    /* Calm Aquatic / Deep Oceanic Palette : NOT pitch black */
     --background: #08141e;
     --surface: #0e202e;
     --surface-card: #12283a;

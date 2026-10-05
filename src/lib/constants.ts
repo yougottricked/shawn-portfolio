@@ -28,7 +28,7 @@ export const PROFILE = {
 export const PROJECTS: ProjectData[] = [
   {
     id: "lwicms",
-    title: "LWICMS — Live Fish Retail IMS",
+    title: "LWICMS: Live Fish Retail IMS",
     subtitle: "High-Concurrency Inventory & Multi-Role Commerce Architecture",
     category: "Full-Stack System",
     period: "Final Year Capstone Project (2026)",
@@ -59,7 +59,7 @@ export const PROJECTS: ProjectData[] = [
   },
   {
     id: "aquaponds",
-    title: "AquaPonds — Deep Learning WQI",
+    title: "AquaPonds: Deep Learning WQI",
     subtitle: "Multivariate IoT Water Quality Classifier & Latent Autoencoder",
     category: "Deep Learning",
     period: "Deep Learning Research & System Implementation",
@@ -88,7 +88,7 @@ export const PROJECTS: ProjectData[] = [
   },
   {
     id: "rescuenet",
-    title: "RescueNet — Disaster Logistics",
+    title: "RescueNet: Disaster Logistics",
     subtitle: "Cloud-Native Serverless Humanitarian Management System",
     category: "Cloud Serverless",
     period: "Distributed Systems & Cloud Architecture",
