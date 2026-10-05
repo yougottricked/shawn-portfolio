@@ -1,0 +1,102 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    /* Calm Aquatic / Deep Oceanic Palette — NOT pitch black */
+    --background: #08141e;
+    --surface: #0e202e;
+    --surface-card: #12283a;
+    --surface-hover: #17334a;
+    --border: rgba(56, 189, 248, 0.12);
+    --border-highlight: rgba(56, 189, 248, 0.28);
+    --text-primary: #f0f9ff;
+    --text-secondary: #94a3b8;
+    --text-tertiary: #64748b;
+    --accent-cyan: #38bdf8;
+    --accent-seafoam: #2dd4bf;
+    --accent-marine: #0284c7;
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--text-primary);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    overflow-x: hidden;
+    selection-background-color: rgba(45, 212, 191, 0.25);
+  }
+
+  /* Custom subtle aquatic scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #08141e;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #1e3a52;
+    border-radius: 9999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #2d5575;
+  }
+}
+
+/* Subtle water caustics / fluid gradient overlay */
+.aquatic-gradient-bg {
+  background: radial-gradient(circle at 50% 0%, rgba(14, 165, 233, 0.08) 0%, transparent 60%),
+              radial-gradient(circle at 100% 40%, rgba(45, 212, 191, 0.05) 0%, transparent 50%),
+              #08141e;
+}
+
+/* Zero-JS GPU rotating conic gradient border token */
+@property --angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+@keyframes spin-conic {
+  to {
+    --angle: 360deg;
+  }
+}
+
+.animate-conic {
+  animation: spin-conic 10s linear infinite;
+}
+
+.glowing-conic-border {
+  position: relative;
+  background: #0e202e;
+  border-radius: 16px;
+}
+
+.glowing-conic-border::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: 17px;
+  padding: 1px;
+  background: conic-gradient(
+    from var(--angle),
+    transparent 20%,
+    #38bdf8 45%,
+    #2dd4bf 55%,
+    transparent 80%
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  animation: spin-conic 10s linear infinite;
+}
+
+/* Editorial Serif & Monospace Typography utilities */
+.font-serif-editorial {
+  font-family: "Instrument Serif", Georgia, "Times New Roman", serif;
+}
+
+.font-mono-code {
+  font-family: "Geist Mono", "IBM Plex Mono", Menlo, Monaco, Consolas, monospace;
+}
