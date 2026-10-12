@@ -1,215 +1,163 @@
-export interface ProjectData {
-  id: string;
-  title: string;
-  subtitle: string;
-  category: "Full-Stack System" | "Deep Learning" | "Cloud Serverless";
-  period: string;
-  role: string;
-  summary: string;
-  stats: { label: string; value: string; detail: string }[];
-  tags: string[];
-  highlights: string[];
-  metrics: { [key: string]: string | number };
-}
-
 export const PROFILE = {
   name: "Shawn Ethan Varughese",
-  credential: "BSc (Hons) Software Engineering",
-  institution: "Asia Pacific University (APU)",
-  role: "Aquatic Systems & Full-Stack Architect",
-  tagline: "Architecting high-concurrency fish retail commerce, aquaculture water intelligence, and resilient cloud systems.",
-  status: "Open to High-Impact Opportunities",
-  location: "Kuala Lumpur, Malaysia (MYT / UTC+8)",
+  role: "Software Engineer",
+  location: "Kuala Lumpur, Malaysia",
   email: "yougottricked2002@gmail.com",
   github: "https://github.com/yougottricked",
   linkedin: "https://www.linkedin.com/in/shawn-varughese-377bbb183/",
 };
 
-export const PROJECTS: ProjectData[] = [
+export interface Shot {
+  src: string;
+  alt: string;
+  caption: string;
+  /** Charts and diagrams are shown whole on a white plate; app screenshots fill the frame. */
+  fit?: "cover" | "contain";
+}
+
+export interface Project {
+  id: string;
+  title: string;
+  summary: string;
+  context: string;
+  year: string;
+  role: string;
+  description: string;
+  built: string[];
+  stack: string[];
+  shots: Shot[];
+}
+
+export const PROJECTS: Project[] = [
   {
     id: "lwicms",
-    title: "LWICMS: Live Fish Retail IMS",
-    subtitle: "High-Concurrency Inventory & Multi-Role Commerce Architecture",
-    category: "Full-Stack System",
-    period: "Final Year Capstone Project (2026)",
-    role: "Lead Systems Architect & Full-Stack Engineer",
-    summary:
-      "A comprehensive multi-tenant retail & customer management platform resolving mortality tracking gaps (66.7% unrecorded in retail) and real-time inventory visibility. Features an 11-rule automated tank compatibility engine and a visual drag-and-drop 2D aquarium layout builder.",
-    stats: [
-      { label: "Controllers", value: "36", detail: "MVC application tier" },
-      { label: "Declared Routes", value: "274", detail: "REST & API endpoints" },
-      { label: "Database Schema", value: "91", detail: "Tables with 164 Foreign Keys" },
-      { label: "Evaluation", value: "5.0/5.0", detail: "Rated Excellent by 37 Industry Testers" },
+    title: "LWICMS",
+    summary: "Inventory and customer management for ornamental fish shops",
+    context: "Final year project",
+    year: "2026",
+    role: "Solo",
+    description:
+      "Aquarium shops in Malaysia often track live stock on paper or in spreadsheets, so fish deaths and sales go unrecorded. LWICMS is a web system where shops manage stock tank by tank, record sales and losses, order from suppliers, and where hobbyists can plan an aquarium before they buy.",
+    built: [
+      "Tank-level stock: each tank knows which species it holds and how full it is. Sales and mortality update stock inside a database transaction, so two staff can't sell the same fish.",
+      "An aquarium builder for hobbyists that checks space, temperament and water parameters before anything goes in the cart.",
+      "A breeder side: track breeding colonies and spawn batches from eggs to sellable fish, log water chemistry, and see which shops are running low on fish the breeder can supply, then send them a proposal.",
+      "Purchase orders, a supplier directory and customer pre-orders for shops.",
+      "Five user roles (admin, shop owner, staff, breeder, hobbyist), CSV reports, and a full English and Chinese interface.",
     ],
-    tags: ["PHP MVC", "MySQL 8.4", "InnoDB Transactions", "Row Locks", "Chart.js", "RBAC"],
-    highlights: [
-      "11-Rule Tank Compatibility Engine balancing pH, dGH hardness, temperature, predatory matrix, and volume capacity.",
-      "Row-locked atomic checkout & instantaneous mortality stock decrements preventing retail overselling.",
-      "Interactive 2D Visual Aquarium Builder with live asset positioning and water chemistry validation.",
-      "Role-based permission barriers across 5 distinct actors: Admin, Shop Owner, Staff, Breeder, and Hobbyist.",
+    stack: ["PHP 8.3", "MySQL 8.4", "JavaScript", "Chart.js"],
+    shots: [
+      { src: "/work/lwicms-dashboard.webp", alt: "LWICMS shop owner dashboard", caption: "Shop owner dashboard: stock, revenue, mortality and top sellers for the year" },
+      { src: "/work/lwicms-tanks.webp", alt: "LWICMS tank overview", caption: "Tanks: what each tank holds and how close it is to capacity" },
+      { src: "/work/lwicms-inventory.webp", alt: "LWICMS inventory list", caption: "Inventory across fish, plants and products, with low-stock flags" },
+      { src: "/work/lwicms-aquarium-builder.webp", alt: "LWICMS aquarium builder", caption: "Aquarium builder: a 180 cm planted tank that passes all 23 habitat checks" },
+      { src: "/work/lwicms-breeder-dashboard.webp", alt: "LWICMS breeder dashboard", caption: "Breeder dashboard: supply stock, shop demand alerts and proposals" },
+      { src: "/work/lwicms-breeder-batch.webp", alt: "LWICMS spawn batch detail", caption: "A spawn batch moving from eggs to juveniles, with survival tracked" },
+      { src: "/work/lwicms-breeder-demand.webp", alt: "LWICMS shop demand page", caption: "Shop demand: shops low on stock that the breeder can supply" },
+      { src: "/work/lwicms-landing.webp", alt: "LWICMS public landing page", caption: "Public landing page for browsing shops, fish and breeders" },
     ],
-    metrics: {
-      controllers: 36,
-      routes: 274,
-      tables: 91,
-      foreignKeys: 164,
-      unitTests: "30/30 Passed",
-      industrySurvey: 37,
-    },
-  },
-  {
-    id: "aquaponds",
-    title: "AquaPonds: Deep Learning WQI",
-    subtitle: "Multivariate IoT Water Quality Classifier & Latent Autoencoder",
-    category: "Deep Learning",
-    period: "Deep Learning Research & System Implementation",
-    role: "AI / ML Researcher & Algorithm Engineer",
-    summary:
-      "Empirical deep learning pipeline for aquaculture water quality classification and anomaly detection. Ingests high-frequency IoT telemetry (pH, Dissolved Oxygen, Temperature, Turbidity, Conductivity, Ammonia) through tuned DNNs and representation-learning Autoencoders.",
-    stats: [
-      { label: "IoT Sensors", value: "6 Stream", detail: "Multivariate telemetry" },
-      { label: "Hyperband", value: "KerasTuner", detail: "Bayesian-optimized layers" },
-      { label: "Autoencoder", value: "Latent Bottleneck", detail: "Anomaly reconstruction" },
-      { label: "Ablation", value: "Depth & Batch", detail: "Rigorous empirical testing" },
-    ],
-    tags: ["TensorFlow", "Keras", "KerasTuner", "Autoencoders", "Multivariate IoT", "Python"],
-    highlights: [
-      "Bayesian-optimized Deep Neural Network (DNN) with adaptive dropout and learning rate decay.",
-      "Unsupervised Latent Autoencoder reconstructing sensor vectors to detect equipment drift and water degradation.",
-      "Semi-supervised hybrid classifier achieving superior sample efficiency across imbalanced aquaculture conditions.",
-      "Systematic ablation suite: evaluated depth scaling (1-5 layers), batch sweeps (16-128), and Adam vs RMSprop vs SGD.",
-    ],
-    metrics: {
-      sensors: 6,
-      modelVariants: 4,
-      testF1: "97.4%",
-      reconstructionLoss: "0.014 MSE",
-    },
   },
   {
     id: "rescuenet",
-    title: "RescueNet: Disaster Logistics",
-    subtitle: "Cloud-Native Serverless Humanitarian Management System",
-    category: "Cloud Serverless",
-    period: "Distributed Systems & Cloud Architecture",
-    role: "Cloud Systems Engineer",
-    summary:
-      "Mission-critical disaster relief platform built on AWS Serverless microservices. Orchestrates emergency shelter capacity, victim identification registries, and supply cover logistics across distributed crisis operations.",
-    stats: [
-      { label: "AWS Stack", value: "SAM + Lambda", detail: "Node.js 20.x in private VPC" },
-      { label: "Relational DB", value: "PostgreSQL", detail: "18 normalized operational tables" },
-      { label: "Architecture", value: "Zero-Route RPC", detail: "Type-safe dispatcher pattern" },
-      { label: "Latency", value: "Sub-100ms", detail: "Distributed X-Ray tracing" },
-    ],
-    tags: ["AWS SAM", "AWS Lambda", "Amazon RDS", "PostgreSQL", "React", "CloudWatch"],
-    highlights: [
-      "AWS SAM & CloudFormation automated infrastructure provisioning with isolated VPC private subnets.",
-      "Zero-route RPC client bridge (`controllers.js`) decoupling frontend UI from low-level HTTP verbs.",
-      "12-column urgency-sorted operations dashboard composing live occupancy, supply cover days, and derived alerts in a single query.",
-      "Granular victim intake and resource supply chains ensuring 100% accountability in relief zones.",
-    ],
-    metrics: {
-      tables: 18,
-      functions: "Microservices",
-      vpcSubnets: 2,
-      tracing: "AWS X-Ray",
-    },
-  },
-];
-
-export const SKILL_CATEGORIES = [
-  {
-    category: "Systems & Architecture",
-    items: [
-      { name: "Distributed Systems", level: "Advanced", note: "Event-driven, RPC bridges, AWS SAM" },
-      { name: "PostgreSQL / MySQL", level: "Advanced", note: "InnoDB transactions, row locks, 90+ table schemas" },
-      { name: "High-Concurrency Ledgers", level: "Expert", note: "Atomic sales, inventory decrement invariants" },
-      { name: "Cloud & VPC Infrastructure", level: "Advanced", note: "AWS Lambda, RDS, VPC private subnets, X-Ray" },
-    ],
-  },
-  {
-    category: "AI & Machine Learning",
-    items: [
-      { name: "Deep Neural Networks (DNN)", level: "Advanced", note: "TensorFlow, Keras, architectural ablations" },
-      { name: "Autoencoders & Anomaly Detection", level: "Advanced", note: "Latent bottlenecks, reconstruction loss" },
-      { name: "Hyperparameter Tuning", level: "Proficient", note: "KerasTuner, Bayesian search, Hyperband" },
-      { name: "Multivariate Time-Series IoT", level: "Advanced", note: "Sensor telemetry, feature engineering, WQI" },
-    ],
-  },
-  {
-    category: "Frontend & Design Engineering",
-    items: [
-      { name: "Next.js 15 & React 19", level: "Expert", note: "App Router, Server Actions, Turbopack" },
-      { name: "Tactile Motion Physics", level: "Advanced", note: "Critically damped springs, layoutId morphs" },
-      { name: "Tailwind CSS v4", level: "Expert", note: "Design tokens, CSS @property, nested radius" },
-      { name: "Interactive 2D/3D Canvas", level: "Proficient", note: "Aquarium visualizers, SVG geometry, shaders" },
-    ],
-  },
-];
-
-export const CREDENTIALS = [
-  {
+    title: "RescueNet",
+    summary: "Disaster relief coordination platform",
+    context: "Cloud computing group project",
     year: "2026",
-    title: "BSc (Hons) Software Engineering",
-    issuer: "Asia Pacific University (APU)",
-    detail: "Graduating with First-Class honours trajectory. Capstone FYP in high-concurrency aquaculture software.",
+    role: "Team of 4 · I built the volunteer module",
+    description:
+      "During floods, relief groups coordinate shelters, victims and supplies over scattered chats and spreadsheets. RescueNet puts that in one place. Each team member owned one user role; I built everything a volunteer uses in the field.",
+    built: [
+      "A volunteer dashboard showing shelter occupancy, supply levels and open tasks, with an alert when any supply drops below a day of cover.",
+      "Victim registration. Changing a victim's status (checked in, medical, transferred, discharged) updates the shelter's headcount in the same transaction.",
+      "Resource requests and task tracking, from pending to in progress to done.",
+      "A single RPC endpoint in place of REST routes, so the React pages call backend controller functions directly.",
+    ],
+    stack: ["React", "Node.js", "Express", "PostgreSQL", "AWS"],
+    shots: [
+      { src: "/work/rescuenet-dashboard.webp", alt: "RescueNet volunteer dashboard", caption: "Volunteer dashboard: shelter capacity, supply alerts and open tasks" },
+      { src: "/work/rescuenet-victims.webp", alt: "RescueNet victim register", caption: "Victim register for the volunteer's assigned shelters" },
+      { src: "/work/rescuenet-tasks.webp", alt: "RescueNet task list", caption: "Tasks with one next action each: start, then mark complete" },
+      { src: "/work/rescuenet-requests.webp", alt: "RescueNet resource requests", caption: "Resource requests raised by the volunteer, tracked by status" },
+    ],
   },
   {
+    id: "water-quality",
+    title: "Pond Water Quality Classifier",
+    summary: "Deep learning on fish pond sensor data",
+    context: "Deep learning assignment",
     year: "2026",
-    title: "Final Year Project: Perfect Stakeholder Rating",
-    issuer: "Industry Validation Panel",
-    detail: "Tested across 37 commercial operators, breeders, and hobbyists. Rated 5.0/5.0 with 30/30 unit tests verified.",
-  },
-  {
-    year: "2025",
-    title: "Deep Learning Research: AquaPonds WQI",
-    issuer: "School of Computing & AI",
-    detail: "Published extensive empirical ablation paper on autoencoder sensor reconstruction for aquaculture water quality.",
-  },
-  {
-    year: "2024",
-    title: "Cloud Disaster System: RescueNet",
-    issuer: "AWS Architecture & Distributed Computing",
-    detail: "Architected serverless humanitarian management platform deployed with AWS SAM and Amazon RDS.",
+    role: "Solo",
+    description:
+      "Using about 50,000 sensor readings from three fish ponds (dissolved oxygen, pH, ammonia, temperature, turbidity, nitrate and manganese), I built a Water Quality Index label and trained two neural networks from scratch to sort each reading into Excellent, Good, Poor or Very Poor.",
+    built: [
+      "A deep neural network reaching 98.55% test accuracy (98.38% ± 0.16 across three random seeds).",
+      "An autoencoder that compresses the 7 readings to 6 numbers, plus a classifier on top: 98.74%, so the compression lost nothing.",
+      "Comparisons against logistic regression (91.6%) and random forest (98.0%), and tests of network depth, batch size and optimiser.",
+      "One honest result: a plain two-layer network scored 98.95%, beating both. More depth and tuning did not help on this data.",
+    ],
+    stack: ["Python", "TensorFlow", "Keras", "KerasTuner", "scikit-learn"],
+    shots: [
+      { src: "/work/dl-models.webp", alt: "Bar chart of test accuracy for six models", caption: "Test accuracy of all six models against the 80% target", fit: "contain" },
+      { src: "/work/dl-confusion.webp", alt: "Confusion matrix of the deep neural network", caption: "Where the deep network's predictions land, by water quality band", fit: "contain" },
+      { src: "/work/dl-learning-curve.webp", alt: "Training and validation curves", caption: "Training and validation accuracy and loss per epoch", fit: "contain" },
+      { src: "/work/dl-sensors.webp", alt: "Distributions of the seven sensor readings", caption: "Distribution of each sensor reading after cleaning", fit: "contain" },
+    ],
   },
 ];
 
-export interface ExperienceData {
+export interface Experience {
   role: string;
   company: string;
-  type: string;
   period: string;
-  duration: string;
   location: string;
-  workplace: string;
   description: string;
-  skills: string[];
 }
 
-export const EXPERIENCES: ExperienceData[] = [
+export const EXPERIENCE: Experience[] = [
   {
-    role: "IT Support Specialist",
+    role: "IT Support Intern",
     company: "DHL Supply Chain",
-    type: "Internship",
-    period: "Jul 2025 - Nov 2025",
-    duration: "5 mos",
-    location: "Shah Alam, Selangor, Malaysia",
-    workplace: "On-site",
+    period: "Jul – Nov 2025",
+    location: "Shah Alam",
     description:
-      "Enterprise supply chain IT infrastructure support, logistics systems operations, and operational telemetry dashboards engineered using Microsoft Power BI.",
-    skills: ["Microsoft Power BI", "Enterprise IT Support", "Logistics Systems", "Operational Telemetry"],
+      "Supported staff and systems at a supply chain site, and built Power BI dashboards for the operations team.",
   },
   {
-    role: "Website Developer",
+    role: "Web Developer Intern",
     company: "Brandvibe",
-    type: "Internship",
-    period: "May 2024 - Jul 2024",
-    duration: "3 mos",
-    location: "Selangor, Malaysia",
-    workplace: "On-site",
+    period: "May – Jul 2024",
+    location: "Selangor",
     description:
-      "Developed responsive web applications, implemented client-facing user interfaces, optimized cross-browser performance, and contributed to frontend production delivery.",
-    skills: ["Web Development", "UI/UX Engineering", "Frontend Architecture", "Cross-Browser Testing"],
+      "Built and maintained responsive client websites and tested them across browsers before release.",
   },
 ];
 
+export const SKILLS = [
+  { group: "Languages", items: "PHP, JavaScript, TypeScript, Python, SQL" },
+  { group: "Frameworks", items: "React, Next.js, Node.js, Express, TensorFlow, Keras" },
+  { group: "Databases", items: "MySQL, PostgreSQL" },
+  { group: "Tools", items: "Git, AWS, Power BI" },
+];
+
+export const EDUCATION = [
+  {
+    award: "Bachelor's degree, Software Engineering (dual degree)",
+    school: "Asia Pacific University (APU) and De Montfort University",
+    period: "Sep 2024 – Sep 2026",
+  },
+  {
+    award: "Diploma in Information Technology, Software Engineering",
+    school: "Asia Pacific University (APU / APIIT)",
+    period: "Apr 2022 – May 2024",
+  },
+];
+
+export const AQUASCAPING_SHOTS: Shot[] = [
+  { src: "/work/aquascape-iaplc-2024.webp", alt: "Planted aquarium layout with driftwood and red plants", caption: "IAPLC 2024 entry, ranked 337th in the world ranking" },
+  { src: "/work/aquascape-iadc-2024.webp", alt: "Dense green planted aquarium layout titled Bonsai Jungle", caption: "IADC 2024 entry, “Bonsai Jungle”" },
+];
+
+export const HOBBIES = [
+  { name: "Football", note: "Playing with friends and following the game." },
+  { name: "Go-karting", note: "Racing on karting tracks." },
+];
