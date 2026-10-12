@@ -207,7 +207,7 @@ function ContactRow({ label, href, value, external }: { label: string; href: str
       >
         <span className="text-muted">{label}</span>
         <span className="col-span-2 flex items-center justify-between gap-3 break-all">
-          <span className="transition-colors group-hover:text-accent">{value}</span>
+          <span className="underline-offset-4 decoration-accent decoration-2 group-hover:underline">{value}</span>
           <ArrowUpRight className="h-4 w-4 shrink-0 text-muted transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
         </span>
       </a>
