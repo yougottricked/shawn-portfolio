@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { PROFILE } from "@/lib/constants";
 
 const NAV = [
   { id: "work", label: "Work" },
@@ -71,6 +72,13 @@ export function SiteNav() {
           </a>
         );
       })}
+      <a
+        href={PROFILE.cv}
+        download
+        className="rounded-md border border-line px-2.5 py-1 text-fg transition-colors hover:border-muted/50"
+      >
+        CV
+      </a>
     </nav>
   );
 }

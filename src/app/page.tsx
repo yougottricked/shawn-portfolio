@@ -1,14 +1,14 @@
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Download, Mail } from "lucide-react";
 import { ShotSlider } from "@/components/ShotSlider";
 import { SiteNav } from "@/components/SiteNav";
-import { AQUASCAPING_SHOTS, EDUCATION, EXPERIENCE, HOBBIES, PROFILE, PROJECTS, SKILLS, type Project } from "@/lib/constants";
+import { AQUASCAPING_RESULTS, AQUASCAPING_SHOTS, EDUCATION, EXPERIENCE, PROFILE, PROJECTS, SKILLS, type Project } from "@/lib/constants";
 
 export default function Home() {
   return (
     <>
       <header className="sticky top-0 z-20 border-b border-line bg-bg/85 backdrop-blur">
         <div className="mx-auto flex h-16 max-w-5xl items-center justify-between px-6">
-          <a href="#work" className="leading-tight">
+          <a href="#top" className="leading-tight">
             <span className="block text-[15px] font-semibold">{PROFILE.name}</span>
             <span className="block text-sm text-muted">{PROFILE.role}</span>
           </a>
@@ -16,7 +16,35 @@ export default function Home() {
         </div>
       </header>
 
-      <main className="mx-auto max-w-5xl px-6">
+      <main id="top" className="mx-auto max-w-5xl px-6">
+        <section aria-labelledby="intro-heading" className="pt-14 pb-4 sm:pt-20">
+          <h1 id="intro-heading" className="max-w-3xl text-3xl font-semibold leading-tight tracking-tight sm:text-[40px]">
+            Software engineer in Kuala Lumpur, building web systems on relational databases.
+          </h1>
+          <p className="mt-5 max-w-2xl text-[17px] leading-relaxed text-muted">
+            I studied software engineering at APU, finishing a dual degree with De Montfort University in 2026, and
+            I&apos;m looking for a software engineering role. Most of my recent work comes from the aquarium trade,
+            which I know well because aquascaping is my hobby.
+          </p>
+          <div className="mt-8 flex flex-wrap gap-3">
+            <a
+              href={PROFILE.cv}
+              download
+              className="inline-flex items-center gap-2 rounded-lg bg-fg px-4 py-2.5 text-[15px] font-medium text-bg transition-opacity hover:opacity-90"
+            >
+              <Download className="h-4 w-4" />
+              Download CV
+            </a>
+            <a
+              href={`mailto:${PROFILE.email}`}
+              className="inline-flex items-center gap-2 rounded-lg border border-line px-4 py-2.5 text-[15px] font-medium transition-colors hover:border-muted/50"
+            >
+              <Mail className="h-4 w-4" />
+              Email me
+            </a>
+          </div>
+        </section>
+
         <section id="work" aria-labelledby="work-heading" className="pt-14 sm:pt-20">
           <SectionHeading id="work-heading">Selected work</SectionHeading>
           <div className="divide-y divide-line">
@@ -87,29 +115,19 @@ export default function Home() {
             </div>
             <div className="md:col-span-8">
               <p className="text-[15px] leading-relaxed">
-                I design and build planted aquarium layouts and enter them in international contests. It&apos;s
-                also where the idea for LWICMS came from.
+                I design and build planted aquarium layouts and enter them in contests. It&apos;s also where the
+                ideas for LWICMS and AkuaVerse came from. Away from the tank, I play football and go karting.
               </p>
               <dl className="mt-8 divide-y divide-line border-y border-line">
-                <div className="grid grid-cols-3 gap-4 py-3 text-[15px]">
-                  <dt className="text-muted">IAPLC 2024</dt>
-                  <dd className="col-span-2">Ranked 337th in the world ranking</dd>
-                </div>
-                <div className="grid grid-cols-3 gap-4 py-3 text-[15px]">
-                  <dt className="text-muted">IADC 2024</dt>
-                  <dd className="col-span-2">Entered “Bonsai Jungle”</dd>
-                </div>
+                {AQUASCAPING_RESULTS.map((r) => (
+                  <div key={r.contest} className="grid grid-cols-3 gap-4 py-3 text-[15px]">
+                    <dt className="text-muted">{r.contest}</dt>
+                    <dd className="col-span-2">{r.result}</dd>
+                  </div>
+                ))}
               </dl>
             </div>
           </div>
-          <ul className="mt-12 divide-y divide-line border-y border-line">
-            {HOBBIES.map((h) => (
-              <li key={h.name} className="grid gap-1 py-4 md:grid-cols-12 md:gap-8">
-                <h3 className="text-[15px] font-semibold md:col-span-4">{h.name}</h3>
-                <p className="text-[15px] text-muted md:col-span-8">{h.note}</p>
-              </li>
-            ))}
-          </ul>
         </section>
 
         <section id="contact" aria-labelledby="contact-heading" className="border-t border-line py-16 sm:py-20">
@@ -120,6 +138,7 @@ export default function Home() {
             </p>
             <ul className="divide-y divide-line border-y border-line md:col-span-8">
               <ContactRow label="Email" href={`mailto:${PROFILE.email}`} value={PROFILE.email} />
+              <ContactRow label="CV" href={PROFILE.cv} value="Download PDF" download />
               <ContactRow label="LinkedIn" href={PROFILE.linkedin} value="shawn-varughese" external />
               <ContactRow label="GitHub" href={PROFILE.github} value="yougottricked" external />
             </ul>
@@ -149,16 +168,34 @@ function ProjectEntry({ project, number }: { project: Project; number: number })
 
       <div className="mt-10 grid gap-8 md:grid-cols-12">
         <div className="md:col-span-4">
-          <p className="text-sm text-muted tabular-nums">0{number}</p>
+          <p className="text-sm text-muted">
+            <span className="tabular-nums">0{number}</span> · {project.title}
+          </p>
           <h3 id={`${project.id}-title`} className="mt-2 text-xl font-semibold tracking-tight">
-            {project.title}
+            {project.summary}
           </h3>
-          <p className="mt-1 text-[15px] text-muted">{project.summary}</p>
           <dl className="mt-6 space-y-3 text-sm">
             <Meta label="Type" value={project.context} />
             <Meta label="Year" value={project.year} />
             <Meta label="Role" value={project.role} />
           </dl>
+          {project.links && (
+            <ul className="mt-6 space-y-2 text-sm">
+              {project.links.map((link) => (
+                <li key={link.href}>
+                  <a
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group inline-flex items-center gap-1.5 font-medium underline-offset-4 decoration-accent decoration-2 hover:underline"
+                  >
+                    {link.label}
+                    <ArrowUpRight className="h-4 w-4 text-muted transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                  </a>
+                </li>
+              ))}
+            </ul>
+          )}
         </div>
 
         <div className="md:col-span-8">
@@ -197,12 +234,25 @@ function Meta({ label, value }: { label: string; value: string }) {
   );
 }
 
-function ContactRow({ label, href, value, external }: { label: string; href: string; value: string; external?: boolean }) {
+function ContactRow({
+  label,
+  href,
+  value,
+  external,
+  download,
+}: {
+  label: string;
+  href: string;
+  value: string;
+  external?: boolean;
+  download?: boolean;
+}) {
   return (
     <li>
       <a
         href={href}
         {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+        {...(download ? { download: true } : {})}
         className="group grid grid-cols-3 items-center gap-4 py-3 text-[15px]"
       >
         <span className="text-muted">{label}</span>

@@ -2,7 +2,9 @@ export const PROFILE = {
   name: "Shawn Ethan Varughese",
   role: "Software Engineer",
   location: "Kuala Lumpur, Malaysia",
-  email: "yougottricked2002@gmail.com",
+  email: "shawnethan0512@gmail.com",
+  cv: "/Shawn_Ethan_Varughese_CV.pdf",
+  site: "https://portfolio-shawnz.vercel.app",
   github: "https://github.com/yougottricked",
   linkedin: "https://www.linkedin.com/in/shawn-varughese-377bbb183/",
 };
@@ -13,6 +15,13 @@ export interface Shot {
   caption: string;
   /** Charts and diagrams are shown whole on a white plate; app screenshots fill the frame. */
   fit?: "cover" | "contain";
+  /** A looping clip played in place of the image; `src` is then its poster frame. */
+  video?: string;
+}
+
+export interface ProjectLink {
+  label: string;
+  href: string;
 }
 
 export interface Project {
@@ -26,9 +35,36 @@ export interface Project {
   built: string[];
   stack: string[];
   shots: Shot[];
+  links?: ProjectLink[];
 }
 
 export const PROJECTS: Project[] = [
+  {
+    id: "akuaverse",
+    title: "AkuaVerse",
+    summary: "Aquarium marketplace with a 3D tank builder",
+    context: "Personal project, in progress",
+    year: "2026",
+    role: "Solo",
+    description:
+      "AkuaVerse is where LWICMS went next: instead of software for one shop, a marketplace for Malaysia's aquarium trade, where shops list their stock and hobbyists plan a tank before they buy. The centrepiece is the tank builder, which now has a full 3D view.",
+    built: [
+      "A to-scale tank editor with front, side and plan views. Hobbyists place rock, wood, plants and fish, and the builder works out displacement and net water volume and checks that the fish share a temperature range and won't eat each other.",
+      "A 3D view in three.js on WebGPU, falling back to WebGL 2: a rendered water volume with an animated surface and caustics, and particles that follow the same flow field the 2D editor uses. You can orbit freely, and the camera is fitted to the whole tank so no angle crops it.",
+      "The plan turns into a shopping list, with hardscape linked to the specific pieces shops have in stock.",
+      "A Django REST API that validates every saved tank layout on the server, matched by a sanitiser in the browser.",
+    ],
+    stack: ["Python", "Django", "PostgreSQL", "Next.js", "TypeScript", "three.js"],
+    shots: [
+      {
+        src: "/work/akuaverse-3d-poster.webp",
+        video: "/work/akuaverse-3d.mp4",
+        alt: "A planted aquarium on a stand, rotating in a 3D view",
+        caption: "3D view: orbiting a 60 cm planted tank, with water, flow and fish switched on",
+      },
+      { src: "/work/akuaverse-editor.webp", alt: "AkuaVerse tank editor with the livestock panel", caption: "The 2D editor, with the habitat checks passing for the chosen fish" },
+    ],
+  },
   {
     id: "lwicms",
     title: "LWICMS",
@@ -73,6 +109,7 @@ export const PROJECTS: Project[] = [
       "A single RPC endpoint in place of REST routes, so the React pages call backend controller functions directly.",
     ],
     stack: ["React", "Node.js", "Express", "PostgreSQL", "AWS"],
+    links: [{ label: "Team repository", href: "https://github.com/Legendary-Phoenix/RescueNet-Disaster-Relief-Management-System" }],
     shots: [
       { src: "/work/rescuenet-dashboard.webp", alt: "RescueNet volunteer dashboard", caption: "Volunteer dashboard: shelter capacity, supply alerts and open tasks" },
       { src: "/work/rescuenet-victims.webp", alt: "RescueNet victim register", caption: "Victim register for the volunteer's assigned shelters" },
@@ -120,7 +157,7 @@ export const EXPERIENCE: Experience[] = [
     period: "Jul – Nov 2025",
     location: "Shah Alam",
     description:
-      "Supported staff and systems at a supply chain site, and built Power BI dashboards for the operations team.",
+      "Built a standard Power BI dashboard for DHL warehouses across the APAC region, so every site reports its operations the same way. I worked out which KPIs matter most to warehouse workers and operators, designed the dashboard around them, and presented it to the regional teams. I also handled day-to-day IT at the Shah Alam site: setting up laptops, printers and RF scanners, fixing warehouse Wi-Fi, and helping staff onto Microsoft MFA.",
   },
   {
     role: "Web Developer Intern",
@@ -128,21 +165,21 @@ export const EXPERIENCE: Experience[] = [
     period: "May – Jul 2024",
     location: "Selangor",
     description:
-      "Built and maintained responsive client websites and tested them across browsers before release.",
+      "Built business websites for clients in Wix, using Velo for custom behaviour, made Figma prototypes, and updated sites as client requirements changed.",
   },
 ];
 
 export const SKILLS = [
   { group: "Languages", items: "PHP, JavaScript, TypeScript, Python, SQL" },
-  { group: "Frameworks", items: "React, Next.js, Node.js, Express, TensorFlow, Keras" },
-  { group: "Databases", items: "MySQL, PostgreSQL" },
-  { group: "Tools", items: "Git, AWS, Power BI" },
+  { group: "Frameworks", items: "Django, React, Next.js, Node.js, Express, three.js, TensorFlow, Keras" },
+  { group: "Databases", items: "PostgreSQL, MySQL" },
+  { group: "Tools", items: "Git, AWS, Power BI, Figma" },
 ];
 
 export const EDUCATION = [
   {
-    award: "Bachelor's degree, Software Engineering (dual degree)",
-    school: "Asia Pacific University (APU) and De Montfort University",
+    award: "BSc (Hons) Software Engineering, dual award with De Montfort University",
+    school: "Asia Pacific University (APU)",
     period: "Sep 2024 – Sep 2026",
   },
   {
@@ -157,7 +194,8 @@ export const AQUASCAPING_SHOTS: Shot[] = [
   { src: "/work/aquascape-iadc-2024.webp", alt: "Dense green planted aquarium layout titled Bonsai Jungle", caption: "IADC 2024 entry, “Bonsai Jungle”" },
 ];
 
-export const HOBBIES = [
-  { name: "Football", note: "Playing with friends and following the game." },
-  { name: "Go-karting", note: "Racing on karting tracks." },
+export const AQUASCAPING_RESULTS = [
+  { contest: "Setia Alam Aquascaping Competition", result: "1st place, Aquarium Design" },
+  { contest: "IAPLC 2024", result: "Ranked 337th in the world ranking" },
+  { contest: "IADC 2024", result: "Entered “Bonsai Jungle”" },
 ];
